@@ -26,8 +26,9 @@ catch (err) {
 const port = process.env.PORT;
 const clientDir = path_1.default.join(__dirname, "../../dist/public");
 app.use(express_1.default.static(clientDir));
+const indexDir = path_1.default.join(__dirname, "../index.html");
 app.get("/", (req, res) => {
-    res.sendFile("/index.html");
+    res.sendFile(indexDir);
 });
 // const publicDir = path.join(__dirname, '../../public');
 let user;
