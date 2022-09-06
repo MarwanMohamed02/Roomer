@@ -24,11 +24,11 @@ catch (err) {
     io.emit("db_error");
 }
 const port = process.env.PORT;
-const clientDir = path_1.default.join(__dirname, "../../dist/public");
+const clientDir = path_1.default.join(__dirname, "../public");
 app.use(express_1.default.static(clientDir));
 const indexDir = path_1.default.join(__dirname, "../index.html");
 app.get("/", (req, res) => {
-    res.sendFile(indexDir);
+    res.sendFile("/index.html");
 });
 // const publicDir = path.join(__dirname, '../../public');
 let user;
