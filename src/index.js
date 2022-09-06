@@ -25,7 +25,7 @@ catch (err) {
 }
 const port = process.env.PORT;
 app.get("/", (req, res) => {
-    res.send("Eshta8al");
+    res.sendFile("/index.html");
 });
 // const publicDir = path.join(__dirname, '../../public');
 const clientDir = path_1.default.join(__dirname, "../../dist/public");
