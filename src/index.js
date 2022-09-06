@@ -24,11 +24,12 @@ catch (err) {
     io.emit("db_error");
 }
 const port = process.env.PORT;
+const clientDir = path_1.default.join(__dirname, "../../dist/public");
+app.use(express_1.default.static(clientDir));
 app.get("/", (req, res) => {
     res.sendFile("/index.html");
 });
 // const publicDir = path.join(__dirname, '../../public');
-const clientDir = path_1.default.join(__dirname, "../../dist/public");
 let user;
 // Middleware
 io.use(async (socket, next) => {
@@ -41,7 +42,6 @@ io.use(async (socket, next) => {
     }
 });
 // app.use(express.static(publicDir));
-app.use(express_1.default.static(clientDir));
 io.on("connection", (socket) => {
     (0, userLogin_1.userLoginHandler)(io, socket);
     (0, createUserHandler_1.createUserHandler)(io, socket);
