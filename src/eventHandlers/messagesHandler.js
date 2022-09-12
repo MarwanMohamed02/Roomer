@@ -24,7 +24,6 @@ async function messagesHandler(io, socket, room, user) {
         room.addMessage(message);
         io.emit("showActiveRooms", await roomModel_1.Room.getActiveRooms());
         io.to(room.name).emit("message", message);
-        ack("Message sent!");
     });
     // Sending location to everyone
     socket.on("sendLocation", ({ latitude, longitude }, ack) => {

@@ -43,12 +43,30 @@ io.use(async (socket, next) => {
 });
 // app.use(express.static(publicDir));
 io.on("connection", (socket) => {
-    (0, userLogin_1.userLoginHandler)(io, socket);
-    (0, createUserHandler_1.createUserHandler)(io, socket);
-    (0, user_in_lobby_1.userInLobbyHandler)(io, socket, user);
-    socket.on("close", () => console.log("closed"));
+    try {
+        (0, userLogin_1.userLoginHandler)(io, socket);
+        (0, createUserHandler_1.createUserHandler)(io, socket);
+        (0, user_in_lobby_1.userInLobbyHandler)(io, socket, user);
+    }
+    catch (err) {
+        socket.emit("db_error", err);
+        console.log("General Error\n" + err);
+    }
 });
 server.listen(port, () => console.log(`Server up on port ${port}`));
+// let stack = new Stack<number>();
+// stack.push(5)
+// stack.push(4)
+// stack.push(3)
+// stack.push(2)
+// stack.push(2)
+// stack.push(2)
+// stack.push(2)
+// stack.push(2)
+// stack.push(2)
+// stack.push(2)
+// stack.push(2)
+// console.log(stack.arr)
 // async function test() {
 //     const name = "bedroom";
 //     const msg1: Message = {

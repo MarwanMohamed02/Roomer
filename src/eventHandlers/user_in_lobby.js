@@ -27,7 +27,8 @@ function userInLobbyHandler(io, socket, user) {
                     socket.emit("room_found", room.name);
             }
             catch (err) {
-                socket.emit("db_error");
+                socket.emit("db_error", err.message);
+                console.log("Find room err: \n" + err);
             }
         });
         (0, joinRoomHandler_1.joinRoomHandler)(io, socket, user);
@@ -35,7 +36,8 @@ function userInLobbyHandler(io, socket, user) {
             socket.emit("showActiveRooms", await roomModel_1.Room.getActiveRooms());
         }
         catch (err) {
-            socket.emit("db_error");
+            socket.emit("db_error", err);
+            console.log("Show active rooms err: \n" + err);
         }
         (0, createRoomHandler_1.createRoomHandler)(io, socket, user);
         (0, userLogoutHander_1.userLogoutHandler)(io, socket);

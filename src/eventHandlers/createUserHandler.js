@@ -13,7 +13,8 @@ function createUserHandler(io, socket) {
             socket.emit("user_created", user);
         }
         catch (err) {
-            socket.emit("db_error");
+            socket.emit("db_error", err);
+            console.log("Create user err: \n" + err);
         }
     });
 }

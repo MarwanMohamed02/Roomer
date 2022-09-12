@@ -6,7 +6,36 @@
     <title>Roomer</title>
     <link rel="icon" href="/img/favicon.png">
     <link rel="stylesheet" href="/css/styles.min.css">
+    <script src="client_side/skipLogin.js"></script>
     <script defer src="client_side/index.js"></script>
+    <!-- <script>
+        
+        const {Status} = sessionStorage;
+        console.log("Status: " + Status);
+        console.log(localStorage.getItem("hi"))
+         
+        if (!Status){
+            let { token: storedTokens } = localStorage;
+            if (storedTokens) {
+                let tokens = JSON.parse(storedTokens);
+                console.log("stored tokens: " + tokens)
+                if (tokens.length !== 0) {
+                    console.log(tokens);
+                    sessionStorage.setItem("token", tokens[0]);
+                    tokens = tokens.slice(1)
+                    localStorage.setItem("token", JSON.stringify(tokens))
+                    document.location.href = "/chat.html";
+                }
+            }
+        }
+
+
+
+        // localStorage.removeItem("token")
+        // localStorage.removeItem("hi")
+        // console.log(localStorage.getItem("token"));
+
+    </script> -->
 </head>
 
 <body>

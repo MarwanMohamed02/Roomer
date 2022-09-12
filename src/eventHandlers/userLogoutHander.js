@@ -12,7 +12,8 @@ function userLogoutHandler(io, socket) {
             }
         }
         catch (err) {
-            socket.emit("db_error");
+            socket.emit("db_error", err);
+            console.log("Logout room err: \n" + err);
         }
     });
 }

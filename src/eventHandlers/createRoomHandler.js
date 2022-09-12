@@ -13,8 +13,10 @@ function createRoomHandler(io, socket, user) {
         catch (err) {
             if (err.code === 11000)
                 socket.emit("duplicate_room_error");
-            else
-                socket.emit("db_error");
+            else {
+                socket.emit("db_error", err);
+                console.log("Join room err: \n" + err);
+            }
         }
     });
 }
